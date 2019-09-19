@@ -21,15 +21,15 @@
     <lombok.version>1.18.8</lombok.version>
     <junit.version>4.12</junit.version>
     <!--Official plugins-->
-    <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-surefire-plugin-version>2.22.2</maven-surefire-plugin-version>
     <maven-failsafe-plugin-version>${maven-surefire-plugin-version}</maven-failsafe-plugin-version>
     <!--3rd party plugins-->
-    <git-commit-id-plugin.version>3.0.0</git-commit-id-plugin.version>
+    <git-commit-id-plugin.version>3.0.1</git-commit-id-plugin.version>
     <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
     <exists-maven-plugin.version>0.1.0</exists-maven-plugin.version>
     <jacoco-plugin-version>0.8.4</jacoco-plugin-version>
-    <spotless.version>1.23.1</spotless.version>
+    <spotless.version>1.24.1</spotless.version>
     <google-java-format.version>1.7</google-java-format.version>
   </properties>
 
@@ -39,6 +39,14 @@
     <developerConnection>scm:git:git@github.com:quike/template-maven-single.git</developerConnection>
     <tag>${tag}</tag>
   </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/quike/${project.artifactId}</url>
+    </repository>
+  </distributionManagement>
 
   <dependencies>
     <dependency>
