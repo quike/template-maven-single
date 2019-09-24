@@ -1,6 +1,9 @@
-name: ci
+name: push (master)
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -11,6 +14,5 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build
+    - name: Build with Maven
       run: mvn verify -B
-
