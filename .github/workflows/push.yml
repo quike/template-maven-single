@@ -17,7 +17,12 @@ jobs:
     - name: Build with Maven
       run: mvn verify -B
     - name: SonarCloud Scan
-      run: ./mvnw org.sonarsource.scanner.maven:sonar
+      run: |
+        ./mvnw sonar:sonar \
+          -Dsonar.projectKey=${{ GITHUB_REPOSITORY }} \
+          -Dsonar.organization=quike-github \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGE_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
