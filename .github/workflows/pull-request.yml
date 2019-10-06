@@ -16,7 +16,7 @@ jobs:
     - name: SonarCloud Scan
       run: |
         ./mvnw sonar:sonar \
-          -Dsonar.projectKey=${{ GITHUB_REPOSITORY }} \
+          -Dsonar.projectKey=$GITHUB_REPOSITORY \
           -Dsonar.organization=quike-github \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
