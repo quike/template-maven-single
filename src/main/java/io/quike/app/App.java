@@ -1,9 +1,8 @@
 package io.quike.app;
 
-import lombok.extern.log4j.Log4j2;
-
 import java.util.Arrays;
 import java.util.Objects;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class App {
@@ -17,6 +16,7 @@ public class App {
     counter = args.length;
   }
 
+  /** @return counter */
   public static int getCounter() {
     return counter;
   }
