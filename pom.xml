@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.quike</groupId>
@@ -11,15 +12,17 @@
 
   <properties>
     <revision>0.0.0-SNAPSHOT</revision>
-    <sha1 />
+    <sha1/>
     <tag>v${revision}</tag>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <java.version>1.8</java.version>
     <!--3rd party dependencies-->
-    <lombok.version>1.18.8</lombok.version>
-    <junit.version>4.12</junit.version>
+    <lombok.version>1.18.10</lombok.version>
+    <log4j-api.version>2.12.1</log4j-api.version>
+    <guava.version>28.1-jre</guava.version>
+    <junit.version>5.5.2</junit.version>
     <!--Official plugins-->
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-surefire-plugin-version>2.22.2</maven-surefire-plugin-version>
@@ -29,14 +32,14 @@
     <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
     <exists-maven-plugin.version>0.1.0</exists-maven-plugin.version>
     <jacoco-plugin-version>0.8.4</jacoco-plugin-version>
-    <spotless.version>1.24.1</spotless.version>
+    <spotless.version>1.24.3</spotless.version>
     <google-java-format.version>1.7</google-java-format.version>
   </properties>
 
   <scm>
-    <url>https://github.com/quike/template-maven-single</url>
-    <connection>scm:git:git@github.com:quike/template-maven-single.git</connection>
-    <developerConnection>scm:git:git@github.com:quike/template-maven-single.git</developerConnection>
+    <url>https://github.com/quike/${project.artifactId}</url>
+    <connection>scm:git:git@github.com:quike/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:quike/${project.artifactId}.git</developerConnection>
     <tag>${tag}</tag>
   </scm>
 
@@ -48,6 +51,18 @@
     </repository>
   </distributionManagement>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>${log4j-api.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -56,8 +71,25 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
